@@ -10,6 +10,145 @@
 <script type="text/javascript" language="javascript">
 VK.Widgets.Comments('vk_comments', {limit: 10, width: '627', attach: '*', pageUrl: "https://vk.com/app7970419"});
 </script>
+<script type="text/javascript">
+/*web_vitals_polyfill*/(function(){"use strict";var e,t,n,i,r,o,a,c,u,s,f,p;function l(){}return r={passive:!0,capture:!0},o=new Date,a=function n(){i=[],t=-1,e=null,f(addEventListener)},c=function i(r,o){e||(e=o,t=r,n=new Date,f(removeEventListener),u())},u=function r(){if(t>=0&&t<n-o){var a={entryType:"first-input",name:e.type,target:e.target,cancelable:e.cancelable,startTime:e.timeStamp,processingStart:e.timeStamp+t};i.forEach((function(e){e(a)})),i=[]}},s=function e(t){if(t.cancelable){var n=(t.timeStamp>1e12?new Date:performance.now())-t.timeStamp;"pointerdown"==t.type?(function(e,t){var n=function n(){c(e,t),o()},i=function e(){o()},o=function e(){removeEventListener("pointerup",n,r),removeEventListener("pointercancel",i,r)};addEventListener("pointerup",n,r),addEventListener("pointercancel",i,r)})(n,t):c(n,t)}},f=function e(t){["mousedown","keydown","touchstart","pointerdown"].forEach((function(e){return t(e,s,r)}))},p="hidden"===document.visibilityState?0:1/0,addEventListener("visibilitychange",(function e(t){"hidden"===document.visibilityState&&(p=t.timeStamp,removeEventListener("visibilitychange",e,!0))}),!0),a(),!void(self.webVitals={firstInputPolyfill:function e(t){i.push(t),u()},resetFirstInputPolyfill:a,get firstHiddenTime(){return p}}),l})()({});;
 
+(function() {
+var alertCont;
+function trackOldBrowserEvent(event) {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', '/badbrowser_stat.php?act=track&event=' + event);
+  xhr.send();
+}
+function exposeGlobals() {
+  window.hideOldBrowser = function() {
+    alertCont.remove();
+    var date = new Date();
+    date.setTime(date.getTime() + (7 * 24 * 60 * 60 * 1000));
+    var expiresDate = date.toGMTString();
+    var domain = window.locDomain;
+    document.cookie = 'remixoldbshown=1; expires=' + expiresDate + '; path=/' + (domain ? '; domain=.' + domain : '') + ';secure';
+    trackOldBrowserEvent('hideAlert_atom');
+  }
+}
+function checkOldBrowser() {
+  if(!document.body) {
+    setTimeout(checkOldBrowser, 100);
+    return;
+  }
+  try {
+    if ((false || !('noModule' in HTMLScriptElement.prototype)) && !false) {
+      exposeGlobals();
+      var alert = '<div class="OldBrowser__container OldBrowser__container--atom" style="width:960px;">  Ваш браузер устарел. Попробуйте <a href="https://vk.com/away.php?to=https%3A%2F%2F1l-go.mail.ru%2Fr%2Fadid%2F3231459_2016338%2Fpid%2F102819%2Fpof%2F1%2Ff%2F3%2F%3F_1larg_sub%3Dv25v1.505015%26rfr%3D505015%26utm_source%3Dvk%26utm_medium%3Dstripeall%26utm_campaign%3DExpVK&badbrowser=atom&badbrowser_meta=_badbrowser_alert" target="_blank">браузер Atom</a>, чтобы работа ВКонтакте была быстрой и стабильной. <a href="https://vk.com/away.php?to=https%3A%2F%2F1l-go.mail.ru%2Fr%2Fadid%2F3231459_2016338%2Fpid%2F102819%2Fpof%2F1%2Ff%2F3%2F%3F_1larg_sub%3Dv25v1.505015%26rfr%3D505015%26utm_source%3Dvk%26utm_medium%3Dstripeall%26utm_campaign%3DExpVK&badbrowser=atom&badbrowser_meta=_badbrowser_alert" target="_blank">Подробнее</a>  <span class="OldBrowser__close" aria-label="Закрыть" role="button" onclick="hideOldBrowser();"></span></div>';
+      alertCont = document.createElement('div');
+      alertCont.className = 'OldBrowser';
+      alertCont.id = 'old_browser_wrap';
+      alertCont.innerHTML = alert;
+      document.body.appendChild(alertCont);
+      trackOldBrowserEvent('showAlert_atom');
+    } else {
+      if (browserVersion < lastVersions[browserName] - 1) {
+        trackOldBrowserEvent('badBrowser' + (lastVersions[browserName] - browserVersion));
+      }
+    }
+  } catch(e) {}
+}
+setTimeout(checkOldBrowser, 0);
+})();
+var vk = {
+  ads_rotate_interval: 120000,
+  al: parseInt('3') || 4,
+  id: 176448703,
+  sex: 2,
+  intnat: '' ? true : false,
+  host: 'vk.com',
+  loginDomain: 'https://login.vk.com/',
+  lang: 0,
+  statsMeta: {"platform":"web2","st":false,"time":1633923260,"hash":"4JqzJ68wahg4UEZXQLz7wj4TDCGy5fDgdGdhcOBX980"},
+  loaderNavSection: '',
+  rtl: parseInt('') || 0,
+  version: 7711733,
+  stDomains: 0,
+  stDomain: 'https://st4-17.vk.com',
+  navPostfix: "",
+  wsTransport: 'https://stats.vk-portal.net',
+  stExcludedMasks: ["loader_nav","lang","sw\/"],
+  zero: false,
+  contlen: 54256,
+  loginscheme: 'https',
+  ip_h: 'ef37a4b1160affd3fd',
+  navPrefix: '!',
+  dt: parseInt('0') || 0,
+  fs: parseInt('13') || 13,
+  ts: 1633923260,
+  tz: 10800,
+  pd: 0,
+  vcost: 7,
+  time: [2021, 10, 11, 6, 34, 20],
+  sampleUser: -1, spentLastSendTS: new Date().getTime(),
+  a11y: 0,
+  statusExportHash: '326ba58c4538c2b161',
+  audioAdsConfig: {"enabled":true,"sections":["my","user_playlists","group_playlists","my_playlists","recent","audio_feed","recs","recs_audio","recs_album","search","global_search","group_list","user_list","user_wall","group_wall","feed","other","superapp_widget","search_android_auto","recoms_recoms","recoms_new_audios","recoms_new_albums","recoms_communities","recoms_added_recommendation","recoms_top_audios_global","recoms_mood_playlists","games","any_case_playlists","collections","genre_rock","genre_pop","genre_rap","editors_playlists","recoms_recent_recommendation","recoms_new_artists","recoms_friends","recoms_recent_audios","recoms_recent_playlists","recoms_top_audios_global","recoms_artist_promo_playlists","recommended_concerts","search_suggestions","search_owned_audios","search_owned_playlist","search_global_audios","search_global_playlist","search_global_albums","search_global_artists","search_videoclips","artist_info","artist_main_albums","artist_main_audios","artist_featured_albums","artist_featured_audios","artist_featured_albums","artist_featured_albums","artist_pages","artist_events","artist_related","artist_new_album","artist_top_audios","artist_top_videos","artist_concerts"],"day_limit_reached":false,"sign":"5c4b580d75cca763c82921e6ac67fd6310c5ba0b"},
+  longViewTestGroup: "every_view",
+  cma: 0,
+  lpConfig: {
+    enabled: 1,
+    key: '73acbdebe91c6d8baf643c173e548b7d6eed91b8',
+    ts: 1716402729,
+    url: 'https://im.vk.com/nim176448703',
+    lpstat: 0,
+    sseUrl: 'https://papi.vk.com/pushsse/ruim'
+  },
+
+  pr_tpl: "<div class=\"pr %cls%\" id=\"%id%\"><div class=\"pr_bt\"><\/div><div class=\"pr_bt\"><\/div><div class=\"pr_bt\"><\/div><\/div>",
+  push_hash: '709e389b585a88dac1',
+
+  audioInlinePlayerTpl: "<div class=\"audio_inline_player _audio_inline_player no_select\">\n  <div class=\"audio_inline_player_right\">\n    <div class=\"audio_inline_player_volume\"><\/div>\n  <\/div>\n  <div class=\"audio_inline_player_left\">\n    <div class=\"audio_inline_player_progress\"><\/div>\n  <\/div>\n<\/div>",
+
+  pe: {"vk_apps_svg_qr":1,"upload.send_upload_stat":1,"push_notifier":1,"notify_new_events_box":1,"mini_apps_web_add_to_favorites":1,"mini_apps_web_add_to_menu":1,"mini_apps_m_web_new_stub_page":1,"cookie_class_samesite":1,"cookie_secure_default_true":1,"measure_module_navigation_stats":1,"measure_module_navigation_stats_mvk":1,"stickers_bot_link":1,"widgets_xdm_same_origin":1,"stickers_money_transfer_suggestions":1,"web2_story_box_enabled":1,"bridge_mobile_story_box_enabled":1,"navigation_timespent":1,"market_item_recommendations_view_log":1,"market_item_others_view_log":1,"web_stats_transport_story_view":1,"registration_item_stat":1,"mvk_lazy_static_reload":1,"mute_mvk_err_peaks":1,"notifications_view_new":1,"ads_market_autopromotion_bookmarks_stats":1,"mini_apps_web_call_api_form_data":1,"web_new_photo_editor":1,"web_new_photo_editor_crop":1,"web_photo_editor_hide_entrypoint":1,"web_stats_try_send":1,"page_loading_stat":1,"update_private_snippets_by_queue":1,"reactions_enabled":1,"stickers_catalog_reload_after_buy":1,"web_stats_send_on_events_limit":1,"batchify_web_stats":1,"sentry_js_sanitize_frames":1,"sentry_js_server_errors_integration":1,"sentry_js_handled_errors_integration":1,"sentry_js_known_issues_mvk_integration":1,"sentry_js_web_timeouts_forwarding":1,"stickers_web_new_ui":1,"ads_new_reports_web_tgb":1,"ads_autopromotion_web_cashback":1,"ads_autopromotion_web_geo":1,"recognize_mock_turn_off":1,"photo_recognition_web":1,"aliexpress_app_links_with_partner_links":1,"ads_new_reports_web_histories":1,"ads_new_reports_mvk_histories":1,"audio_unauth_preview":1,"ads_easy_promote_goods_new_create_api":1,"messenger_web_themes_easter_egg":1,"mail_history_unread_counter_observer":1,"pinned_conversations":1,"messenger_empty_pinned_support":1,"force_act_in_get_params":1,"vk_mini_apps_new_web_snippet":1,"market_suggest_search_queries":1,"mail_longpoll_unread_counter":1,"faq_clean_up_extra_spaces":1,"nospam_use_new_conditions_editor":1,"inline_attaches_icons":1,"mvk_quick_search_canceled_requests":1,"apps_games_catalog_my_games_cloud":1,"mvk_new_avatar_crop":1,"mail_new_conversation_stickers_hint":1,"open_update_vkpay_static":1,"apps_vk_pay_id_new_for_market_payments":1,"test_folder_masks":1,"simplified_start_conversation":1,"mt_log_disable":1,"microlandings_blocks":1,"js_errors_no_write_uncaught_errors":1,"fav_dialog_with_yourself":1,"vk_bridge_support_vkwebappshownativeads":1,"mvk_vkui_reports":1,"mvk_connection_type":1,"market_orders_carts":1,"market_albums_version_2":1,"mail_business_notify":1,"messages_new_empty_dialog_screen":1,"similar_groups_after_unsubscribe":1,"market_albums_autopromotion_modal":1,"empty_tab_history_check":1,"birthday_logo_2021":1},
+  ex: [],
+  countryISO: 'RU',
+  apiConfigDomains: {
+    domain: 'vk.com',
+    apiDomain: 'api.vk.com',
+    loginDomain: 'login.vk.com',
+    connectDomain: 'connect.vk.com',
+  },
+  messenger: {
+    topMessengerResetTimeout: 1500
+  },
+
+  isCallsDevEnv: '' ? true : false,
+};;vk.rv="108867";;if (!window.constants) { window.constants = {Groups: {
+  GROUPS_ADMIN_LEVEL_USER: 0,
+  GROUPS_ADMIN_LEVEL_MODERATOR: 1,
+  GROUPS_ADMIN_LEVEL_EDITOR: 2,
+  GROUPS_ADMIN_LEVEL_ADMINISTRATOR: 3,
+  GROUPS_ADMIN_LEVEL_HOST: 4,
+  GROUPS_ADMIN_LEVEL_EVENT_CREATOR: 5,
+  GROUPS_ADMIN_LEVEL_CREATOR: 6,
+  GROUPS_ADMIN_PSEUDO_LEVEL_ADVERTISER: 100
+}}; };
+
+window.locDomain = vk.host.match(/[a-zA-Z]+\.[a-zA-Z]+\.?$/)[0];
+var _ua = navigator.userAgent.toLowerCase();
+if (/opera/i.test(_ua) || !/msie 6/i.test(_ua) || document.domain != locDomain) document.domain = locDomain;
+var ___htest = (location.toString().match(/#(.*)/) || {})[1] || '', ___to;
+___htest = ___htest.split('#').pop();
+if (vk.al != 1 && ___htest.length && ___htest.substr(0, 1) == vk.navPrefix) {
+  if (vk.al != 3 || vk.navPrefix != '!') {
+    ___to = ___htest.replace(/^(\/|!)/, '');
+    if (___to.match(/^([^\?]*\.php|login|mobile|away)([^a-z0-9\.]|$)/)) ___to = '';
+    location.replace(location.protocol + '//' + location.host + '/' + ___to);
+  }
+}
+
+var StaticFiles = {
+  'dist/web/common_web.js' : {v: '270'},
+  'al/common.a0b1e63c216049c8ba10.css':{v:''},'common.css':{v:1},'al/base.a95b2d16a40fd3d92903.css':{v:''},'base.css':{v:1},'al/fonts_utf.dcddcf74e9becaf99886.css':{v:''},'fonts_utf.css':{v:1},'al/fonts_cnt.6fd747edcb66189fd865.css':{v:''},'fonts_cnt.css':{v:1}
+  ,'dist/lottie.c879c49410c1c4c5065f.js':{v:'928593f6878ce74e1177'},'dist/audioplayer.55997ae2a2497f9bff70.js':{v:'36356809b1b367f2cac8'},'dist/common.089c1aef20a41d674282.js':{v:'f0337cc426a66af76139'},'dist/web/common_web.3b67ca26955daa18d8bc.js':{v:'10c402c8076f2553fcab8540d2aa6777'},'lang0_0.js': {v: 27232054},'dist/palette.858a637a479552fb181e.js':{v:'ee3628f1d1b425fdda45'},'dist/be86e4a58c60e19a36d6893f07a33c58.019d7751ba2e8862d797.js':{v:'7af02d854de329c2eefe'},'dist/a70f848667098ab1bd7f4922bffe65e3.2a37d7d32e988037338f.js':{v:'be7fe5727bfa070a52c0'},'dist/6ad98774c366a34d32805813baedc199.c1bc4ecb0617e55c8ff2.js':{v:'aff891b7512568972ad4'},'dist/59ff457db40a7d740912b118be6f4e10.7742bfaa96b8afb5e8a5.js':{v:'c37a87626dd25109f673'},'dist/61e819ea22e962a56f5af86671bef940.b41981738dab5e4b5660.js':{v:'b57c1115fc21a7ff2dda'},'dist/7595f140fab1941c9457f2cc8b7b69dd.e91e921e39cfb620632c.js':{v:'422003bf07e457860581'},'dist/web/apps.9fe27c457646d4b842fc.js':{v:''},'apps.js':{v:1},'al/apps.96a063f7a3a24a8f1325.css':{v:''},'apps.css':{v:1},'dist/1fe1df46cdb12c3eb98af3fc95e7c624.6cb4bb91eb6f7598205a.js':{v:'3309b424d60302f14095'},'dist/web/notifier.fee639652c2c0e51d5ef.js':{v:'985dffa97678f083f0fbb73018f99d8c'},'notifier.js':{v:1},'al/notifier.876af8ad7a0bbaec1d28.css':{v:''},'notifier.css':{v:1},'dist/web/sharebox.91e87578056ecaacf9ce.js':{v:'2e53c786ee97f40f5ccd7d271f31e5d4'},'dist/web/sharebox.js':{v:1},'al/ui_common.d29e80e826d06cca876f.css':{v:''},'ui_common.css':{v:1},'dist/web/ui_common.9abfcc782d4cf1a23c5c.js':{v:'97878ddbb1a98e2b0d07d0e85e7294eb'},'ui_common.js':{v:1},'dist/446ae022ef96281d11bf86c3bce4acc2.1f846e24994ee76a0169.js':{v:'2bd7f3477035d54cb64d'},'dist/d168b022618fe490cef492aa87ff2b1d.2910e9661b320eb38fef.js':{v:'4ae68be7c176c3490829'},'dist/ce2a99ec113c464794330da79489a7bf.c0e7af8192609a852e0f.js':{v:'5767092ded843623c9a9'},'dist/e120e5026c619ca56aa6508268a3d433.40156e25e853e07654e0.js':{v:'f3d3de7daabbeb58ae62'},'dist/web/ecosystem_navigation.89dfe5ba706ef620d8ef.js':{v:'d5990284aee836ab639b2400caa491a4'},'dist/web/ecosystem_navigation.js':{v:1},'dist/web/easter_eggs.be8f4e2f567c7434e193.js':{v:'40e953024f662b4f7797c9fe861f56cc'},'dist/web/easter_eggs.js':{v:1},'al/EasterEggsFrame.c0820cfbb2798e98fb10.css':{v:''},'EasterEggsFrame.css':{v:1},'mrtarg.js':{v:3},'al/mrtarg.cf6a1d7431b4b61d80f8.css':{v:''},'mrtarg.css':{v:1},'dist/web/raven_logger.7d833392c1fe598e9cfb.js':{v:'24ee0cb6b716ec34eb28bcfa080b1a9d'},'dist/web/raven_logger.js':{v:1},'dist/web/sentry.22a800381dbf6a2d3623.js':{v:'901e0f8bdc6c7063af09f811bfeee7f2'},'dist/web/sentry.js':{v:1},'dist/web/css_types.d38321e993ca0c7389c9.js':{v:'4edd5ededd8eb49f660a'},'dist/web/css_types.js':{v:1},'dist/web/jobs_devtools_notification.69eb4a1c17b60f6da406.js':{v:'c54728b61563f71d5366a39883b1b8bc'},'dist/web/jobs_devtools_notification.js':{v:1},'dist/web/page_layout.7cd2ed52e358741c6dfb.js':{v:'1f8b9faf801f43b77f7f51dc547e0975'},'dist/web/page_layout.js':{v:1},'dist/web/likes.448f3ec660c6aeb4b9f8.js':{v:'02e040e7222d83d3181f53720b9d9ef0'},'dist/web/likes.js':{v:1}
+}
+var abp;
+</script>
 </body>
 </html>
